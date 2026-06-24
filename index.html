@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Explore how AI may reshape occupations, skills, and employment across the United States." />
+    <title>Workshift | AI and the US job market</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#overview" aria-label="Eduvators home">
+          <img src="assets/eduvators-logo.png" alt="Eduvators" />
+          <small>AI labor intelligence</small>
+        </a>
+
+        <nav aria-label="Primary navigation">
+          <a class="active" href="#overview"><span>01</span> Overview</a>
+          <a href="#occupations"><span>02</span> Occupations</a>
+          <a href="#curriculum"><span>03</span> Curriculum</a>
+          <a href="#scenario"><span>04</span> Scenario lab</a>
+          <a href="#sources"><span>05</span> Sources</a>
+        </nav>
+
+        <div class="sidebar-status">
+          <span class="status-dot"></span>
+          <div><strong>Research edition</strong><small>Updated June 2026</small></div>
+        </div>
+      </aside>
+
+      <main>
+        <header class="topbar" id="overview">
+          <div>
+            <p class="eyebrow">United States · workforce outlook</p>
+            <h1>AI is changing tasks before it changes job titles.</h1>
+            <p class="lede">Explore where work is exposed, where human judgment still matters, and how different adoption paths could reshape the labor market through 2030.</p>
+          </div>
+          <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.91-.1-1.34A7 7 0 0 1 13.34 3.1C12.91 3.04 12.46 3 12 3Z"/></svg>
+          </button>
+        </header>
+
+        <section class="snapshot-grid" aria-label="National snapshot">
+          <article class="snapshot accent-red">
+            <div class="metric-top"><span>Highly exposed</span><span class="metric-icon">↗</span></div>
+            <strong>19%</strong>
+            <p>of US workers are in jobs with the highest AI exposure.</p>
+            <small>Pew Research, 2023</small>
+          </article>
+          <article class="snapshot accent-blue">
+            <div class="metric-top"><span>Using AI at work</span><span class="metric-icon">●</span></div>
+            <strong>21%</strong>
+            <p>of US workers say at least some of their work uses AI.</p>
+            <small>Pew Research, 2025</small>
+          </article>
+          <article class="snapshot accent-green">
+            <div class="metric-top"><span>Employment outlook</span><span class="metric-icon">+</span></div>
+            <strong>+6.7M</strong>
+            <p>net US jobs projected across the economy, 2023–33.</p>
+            <small>US Bureau of Labor Statistics</small>
+          </article>
+          <article class="snapshot accent-yellow">
+            <div class="metric-top"><span>Worker sentiment</span><span class="metric-icon">!</span></div>
+            <strong>52%</strong>
+            <p>say they feel worried about AI’s future workplace impact.</p>
+            <small>Pew Research, 2025</small>
+          </article>
+        </section>
+
+        <section class="insight-band">
+          <div class="insight-copy">
+            <p class="eyebrow light">The signal beneath the headline</p>
+            <h2>Exposure is not the same as replacement.</h2>
+            <p>Jobs heavy in information processing face the most immediate change. But exposure can mean automation, augmentation, or entirely new demand. The mix depends on adoption speed and how organizations redesign work.</p>
+          </div>
+          <div class="exposure-stack" aria-label="Share of US workers by AI exposure">
+            <div class="stack-label"><span>Share of US workers</span><span>100%</span></div>
+            <div class="stack-bar"><span class="high" style="width:19%"></span><span class="mid" style="width:58%"></span><span class="low" style="width:23%"></span></div>
+            <div class="stack-legend"><span><i class="high"></i> High 19%</span><span><i class="mid"></i> Mixed 58%</span><span><i class="low"></i> Low 23%</span></div>
+          </div>
+        </section>
+
+        <section class="workspace" id="occupations">
+          <div class="section-heading">
+            <div><p class="eyebrow">Occupation explorer</p><h2>Where work is shifting</h2></div>
+            <p>Modeled indicators combine task exposure, employment outlook, and human-interaction intensity. They are directional, not forecasts.</p>
+          </div>
+
+          <div class="toolbar">
+            <label class="search-field">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
+              <input id="roleSearch" type="search" placeholder="Search occupations or skills" />
+            </label>
+            <div class="segmented" role="group" aria-label="Exposure filter">
+              <button class="active" type="button" data-filter="all">All</button>
+              <button type="button" data-filter="high">High</button>
+              <button type="button" data-filter="medium">Mixed</button>
+              <button type="button" data-filter="low">Low</button>
+            </div>
+            <label class="select-field"><span>Sector</span><select id="sectorSelect"><option value="all">All sectors</option></select></label>
+          </div>
+
+          <div class="occupation-layout">
+            <div class="occupation-table" role="region" aria-label="Occupation data" tabindex="0">
+              <div class="table-head"><span>Occupation</span><span>AI exposure</span><span>2033 outlook</span><span>Human edge</span><span></span></div>
+              <div id="occupationRows"></div>
+              <div class="empty-state" id="emptyState" hidden>No occupations match those filters.</div>
+            </div>
+
+            <aside class="role-detail" id="roleDetail" aria-live="polite"></aside>
+          </div>
+        </section>
+
+        <section class="curriculum-section" id="curriculum">
+          <div class="section-heading">
+            <div><p class="eyebrow">Curriculum studio</p><h2>Turn workforce signals into programs</h2></div>
+            <p>Explore a practical starting point for embedding AI, career readiness, and durable human skills into an existing college program.</p>
+          </div>
+
+          <div class="curriculum-toolbar">
+            <label for="programSelect"><span>College program</span><select id="programSelect"></select></label>
+            <div class="curriculum-summary">
+              <span>Recommended approach</span>
+              <strong id="programApproach">Embedded across the major</strong>
+            </div>
+            <div class="readiness-score">
+              <div><span>Future-readiness target</span><strong id="readinessValue">84</strong></div>
+              <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="17"></circle><circle id="readinessRing" class="score-ring" cx="22" cy="22" r="17"></circle></svg>
+            </div>
+          </div>
+
+          <div class="curriculum-grid">
+            <div class="curriculum-main">
+              <div class="curriculum-tabs" role="tablist" aria-label="Curriculum view">
+                <button class="active" type="button" data-curriculum-tab="courses">Courses & modules</button>
+                <button type="button" data-curriculum-tab="skills">Skill coverage</button>
+                <button type="button" data-curriculum-tab="assessment">Assessment</button>
+                <button type="button" data-curriculum-tab="analyzer">Gap analyzer</button>
+              </div>
+              <div id="curriculumContent" aria-live="polite"></div>
+            </div>
+
+            <aside class="implementation-panel">
+              <p class="eyebrow">90-day starting plan</p>
+              <h3 id="implementationTitle">Build the foundation</h3>
+              <ol id="implementationSteps"></ol>
+              <div class="guardrail-note">
+                <strong>Design guardrail</strong>
+                <p>Students should demonstrate core knowledge without AI before applying AI to more complex work.</p>
+              </div>
+            </aside>
+          </div>
+
+          <div class="evidence-strip">
+            <span>Framework alignment</span>
+            <a href="https://www.unesco.org/en/articles/ai-competency-framework-students" target="_blank" rel="noreferrer">UNESCO AI competencies ↗</a>
+            <a href="https://naceweb.org/career-readiness/competencies/career-readiness-defined" target="_blank" rel="noreferrer">NACE career readiness ↗</a>
+            <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/in-full/" target="_blank" rel="noreferrer">WEF skills outlook ↗</a>
+          </div>
+        </section>
+
+        <section class="scenario-section" id="scenario">
+          <div class="section-heading inverse">
+            <div><p class="eyebrow light">Scenario lab</p><h2>Stress-test the 2030 outlook</h2></div>
+            <p>Adjust assumptions to see how adoption and job redesign interact. This is a transparent scenario model, not a prediction.</p>
+          </div>
+
+          <div class="scenario-grid">
+            <div class="scenario-controls">
+              <label><span><b>AI adoption</b><output id="adoptionOut">55%</output></span><input id="adoption" type="range" min="20" max="90" value="55" /></label>
+              <label><span><b>Tasks augmented</b><output id="augmentOut">65%</output></span><input id="augmentation" type="range" min="30" max="90" value="65" /></label>
+              <label><span><b>Demand reinvested</b><output id="reinvestOut">45%</output></span><input id="reinvestment" type="range" min="10" max="80" value="45" /></label>
+              <div class="model-note"><strong>How to read it</strong><p>Higher augmentation and reinvestment redirect productivity gains toward new work. Lower values increase displacement pressure.</p></div>
+            </div>
+
+            <div class="scenario-results">
+              <article><span>Workforce touched</span><strong id="touchedResult">46.8M</strong><small>workers in materially affected roles</small></article>
+              <article><span>Hours redirected</span><strong id="hoursResult">4.8B</strong><small>annual hours shifted to other tasks</small></article>
+              <article><span>Net job pressure</span><strong id="jobsResult">−0.6M</strong><small id="jobsCaption">more displacement than creation</small></article>
+              <div class="balance-chart">
+                <div class="balance-label"><span>Displacement pressure</span><span>New demand</span></div>
+                <div class="balance-track"><span id="displacementBar"></span><i></i><span id="creationBar"></span></div>
+                <p id="scenarioNarrative"></p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="sources" id="sources">
+          <div><p class="eyebrow">Method & sources</p><h2>Built for questions, not certainty.</h2></div>
+          <p>National benchmarks come from public research. Occupation scores and scenario outputs are Workshift models designed for exploration and should not be treated as official projections.</p>
+          <div class="source-links">
+            <a href="https://www.pewresearch.org/social-trends/2023/07/26/which-u-s-workers-are-more-exposed-to-ai-on-their-jobs/" target="_blank" rel="noreferrer">Pew · AI exposure <span>↗</span></a>
+            <a href="https://www.pewresearch.org/social-trends/2025/02/25/workers-views-of-ai-use-in-the-workplace/" target="_blank" rel="noreferrer">Pew · Worker views <span>↗</span></a>
+            <a href="https://www.bls.gov/emp/" target="_blank" rel="noreferrer">BLS · Employment projections <span>↗</span></a>
+            <a href="https://www.onetcenter.org/database.html" target="_blank" rel="noreferrer">O*NET · Task database <span>↗</span></a>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
